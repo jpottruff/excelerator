@@ -7,11 +7,10 @@ import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
   styleUrls: ['./drag-drop.component.scss']
 })
 export class DragDropComponent implements OnInit {
-  
 
   inDropArea = false;
 
-  uploadList: any = [{name: 'lucy'}, {name: 'jim'}];
+  uploadList = [];
   filesToUpload = 0;
   filesUploaded = 0;
   progressBarValue = 0;

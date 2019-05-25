@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import * as XLSX from 'xlsx';
-import { resolve } from 'url';
 
 @Component({
   selector: 'app-generate-controls',
@@ -12,10 +11,10 @@ export class GenerateControlsComponent implements OnInit {
 
   // FIX ME - these will come from something user can set
   dataToFilterByList = ['dog', 'cat', 'fish' ];
-  columnToFilter = 3;
-  columnsToInclude = [0, 2, 6];
+  columnToFilter = 0;
+  columnsToInclude = [0, 1, 5];
 
-  headers = ['these', 'are', 'headers'];
+  headers = ['date', 'these', 'are', 'headers', 'item'];
   fileName = 'MySweetFile.xlsx';
   sheetName = 'Sweet Sheet';
 
@@ -90,7 +89,7 @@ export class GenerateControlsComponent implements OnInit {
       const relevantFileDataRows = [];
       incomingData.forEach( (dataRow, i) => {
         if (this.dataToFilterByList.includes((dataRow[this.columnToFilter]))) {
-          const rowNum = i + 1;
+          const rowNum = i + 2;
           const relevantDataRow = this.getRelevantDataFromRow(dataRow);
           relevantDataRow.push(rowNum);
           relevantFileDataRows.push(relevantDataRow);
