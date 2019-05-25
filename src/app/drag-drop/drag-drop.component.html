@@ -1,0 +1,13 @@
+<div class="drag-drop-component">
+  
+  <div id="drop-area"
+    (dragenter)="setHighlight($event)"
+    (dragleave)="setHighlight($event)"
+    (dragover)="setHighlight($event)"
+    (drop)="handleDrop($event)"
+    [ngClass]="inDropArea ? 'highlighted' : 'unhighlighted'"
+  >
+    <app-file-preview-pane *ngIf="uploadList.length > 0" [files]='uploadList'></app-file-preview-pane>
+  </div>
+
+</div>

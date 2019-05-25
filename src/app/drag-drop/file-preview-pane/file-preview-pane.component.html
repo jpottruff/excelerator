@@ -1,0 +1,8 @@
+<div class="file-preview-pane-component">
+  <ul class="file-preview-list">
+    <li *ngFor="let file of files; let i = index">
+      <button (click)=removeFile(i)>X</button>
+      {{file.name}}
+    </li>
+  </ul>  
+</div>

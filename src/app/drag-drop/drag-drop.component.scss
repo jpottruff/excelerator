@@ -1,0 +1,11 @@
+#drop-area {
+    margin: 20px auto;
+    border: 5px dashed gray;
+    height: 200px;
+    width: 50%;
+}
+
+#drop-area.highlighted {
+    border: 5.5px dashed purple;
+    background-color: #CCC;
+}
