@@ -9,5 +9,7 @@
   >
     <app-file-preview-pane *ngIf="uploadList.length > 0" [files]='uploadList'></app-file-preview-pane>
   </div>
-
+  <input type="file" class="hidden" multiple accept="text/plain">
+  <!-- for only excel (xlsx, xls) files -->
+  <!-- <input type="file" class="hidden" multiple accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"> -->
 </div>

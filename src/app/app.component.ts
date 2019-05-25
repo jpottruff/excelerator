@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
+import { EventEmitter } from 'events';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  @Output() filesRequested = new EventEmitter();
+
   title = 'excelerator';
+  files: any[];
+
+  setFiles(files) {
+    this.files = files;
+  }
+
 }

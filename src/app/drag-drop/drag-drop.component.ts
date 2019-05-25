@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+
 
 @Component({
   selector: 'app-drag-drop',
@@ -6,12 +7,16 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./drag-drop.component.scss']
 })
 export class DragDropComponent implements OnInit {
+  
+
   inDropArea = false;
 
   uploadList: any = [{name: 'lucy'}, {name: 'jim'}];
   filesToUpload = 0;
   filesUploaded = 0;
   progressBarValue = 0;
+
+  @Output() uploadedFilesEvent = new EventEmitter();
 
   constructor() { }
 
@@ -48,8 +53,11 @@ export class DragDropComponent implements OnInit {
       this.progressBarValue = this.filesUploaded / this.filesToUpload * 100;
     });
 
+    // Send them to the Control Pannel so they can be processed
+    this.uploadedFilesEvent.emit(this.uploadList);
+
+    // Reset the Progress Bar
     this.resetProgressBar();
-    console.log(this.uploadList);
   }
 
   resetProgressBar() {

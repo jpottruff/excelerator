@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class FilePreviewPaneComponent implements OnInit {
 
-  @Input() files: [];
+  @Input() files: any[];
 
   constructor() { }
 
