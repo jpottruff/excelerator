@@ -21,13 +21,18 @@ export class GenerateControlsComponent implements OnInit {
   async generateXLSX() {
     // Filter the files to extract the relevant data
     const uploadedFiles = this.files;
-    const processedFiles = await this.parsingService.processFiles(uploadedFiles);
+
+    // Convert the files to JSON
+    const convertedFiles = await uploadedFiles.map((file) => this.xlsxService.convertFileToJSON(file));
+    const JSONfiles = await Promise.all(convertedFiles);
+
+    // Send to Parsing Service for Processing
+    const processedFiles = await this.parsingService.processFiles(JSONfiles);
 
     // Make an AOA from the Processed Files
-    // const wsAOA = await this.combineFiles(processedFiles);
     const wsAOA = await this.parsingService.combineFiles(processedFiles);
 
-    //Create the new xlsx Workbook and Export it
+    // Create the new xlsx Workbook and Export it
     this.xlsxService.createXLSX(wsAOA);
   }
 
